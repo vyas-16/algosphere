@@ -1,45 +1,85 @@
-# AlgoSphere
+# AlgoSphere – DeFi Guardian
 
-This starter full stack project has been generated using AlgoKit. See below for default getting started instructions.
+AlgoSphere is an AI-powered DeFi security platform that analyzes smart contracts and wallet activity to detect scams, vulnerabilities, and risky transactions.
 
-## Setup
+This project was built for a 24-hour hackathon to help users interact with decentralized finance more safely.
 
-### Initial setup
-1. Clone this repository to your local machine.
-2. Ensure [Docker](https://www.docker.com/) is installed and operational. Then, install `AlgoKit` following this [guide](https://github.com/algorandfoundation/algokit-cli#install).
-3. Run `algokit project bootstrap all` in the project directory. This command sets up your environment by installing necessary dependencies, setting up a Python virtual environment, and preparing your `.env` file.
-4. In the case of a smart contract project, execute `algokit generate env-file -a target_network localnet` from the `AlgoSphere-contracts` directory to create a `.env.localnet` file with default configuration for `localnet`.
-5. To build your project, execute `algokit project run build`. This compiles your project and prepares it for running.
-6. For project-specific instructions, refer to the READMEs of the child projects:
-   - Smart Contracts: [AlgoSphere-contracts](projects/AlgoSphere-contracts/README.md)
-   - Frontend Application: [AlgoSphere-frontend](projects/AlgoSphere-frontend/README.md)
+---
 
-> This project is structured as a monorepo, refer to the [documentation](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/project/run.md) to learn more about custom command orchestration via `algokit project run`.
+## Problem
 
-### Subsequently
+DeFi users often interact with unknown smart contracts and wallets.
+Many scams, rug pulls, and malicious contracts exist, but users have no easy way to analyze the risk before interacting.
 
-1. If you update to the latest source code and there are new dependencies, you will need to run `algokit project bootstrap all` again.
-2. Follow step 3 above.
+---
 
-## Tools
+## Solution
 
-This project makes use of Python and React to build Algorand smart contracts and to provide a base project configuration to develop frontends for your Algorand dApps and interactions with smart contracts. The following tools are in use:
+AlgoSphere provides an intelligent analysis layer that evaluates smart contracts and wallet activity using AI and blockchain data.
 
-- Algorand, AlgoKit, and AlgoKit Utils
-- Python dependencies including Poetry, Black, Ruff or Flake8, mypy, pytest, and pip-audit
-- React and related dependencies including AlgoKit Utils, Tailwind CSS, daisyUI, use-wallet, npm, jest, playwright, Prettier, ESLint, and Github Actions workflows for build validation
+Users can connect their wallet and instantly get a **risk score and vulnerability insights**.
 
-### VS Code
+---
 
-It has also been configured to have a productive dev experience out of the box in [VS Code](https://code.visualstudio.com/), see the [backend .vscode](./backend/.vscode) and [frontend .vscode](./frontend/.vscode) folders for more details.
+## Features
 
-## Integrating with smart contracts and application clients
+* Smart contract risk analysis
+* AI-powered vulnerability detection
+* Wallet activity inspection
+* Risk scoring for DeFi interactions
+* User-friendly dashboard interface
 
-Refer to the [AlgoSphere-contracts](projects/AlgoSphere-contracts/README.md) folder for overview of working with smart contracts, [projects/AlgoSphere-frontend](projects/AlgoSphere-frontend/README.md) for overview of the React project and the [projects/AlgoSphere-frontend/contracts](projects/AlgoSphere-frontend/src/contracts/README.md) folder for README on adding new smart contracts from backend as application clients on your frontend. The templates provided in these folders will help you get started.
-When you compile and generate smart contract artifacts, your frontend component will automatically generate typescript application clients from smart contract artifacts and move them to `frontend/src/contracts` folder, see [`generate:app-clients` in package.json](projects/AlgoSphere-frontend/package.json). Afterwards, you are free to import and use them in your frontend application.
+---
 
-The frontend starter also provides an example of interactions with your AlgosphereCoreClient in [`AppCalls.tsx`](projects/AlgoSphere-frontend/src/components/AppCalls.tsx) component by default.
+## Tech Stack
 
-## Next Steps
+* **Blockchain:** Algorand
+* **Backend:** Python
+* **Frontend:** React / TypeScript
+* **AI Integration:** LLM-based analysis
+* **Tools:** AlgoKit, Docker
 
-You can take this project and customize it to build your own decentralized applications on Algorand. Make sure to understand how to use AlgoKit and how to write smart contracts for Algorand before you start.
+---
+
+## Project Structure
+
+projects/AlgoSphere-contracts → Smart contracts
+projects/AlgoSphere-frontend → Frontend interface
+server.py → Backend AI processing
+
+---
+
+## How to Run
+
+Clone the repository
+
+git clone https://github.com/vyas-16/algosphere.git
+
+Install dependencies
+
+pip install -r requirements.txt
+
+Run the backend server
+
+python server.py
+
+---
+
+## Future Improvements
+
+* Real-time DeFi monitoring
+* More advanced vulnerability detection
+* Multi-chain support
+* Browser wallet extension
+
+---
+
+## Hackathon Project
+
+Built during a 24-hour hackathon to demonstrate how AI can improve blockchain security.
+
+---
+
+## Author
+
+Vyas
