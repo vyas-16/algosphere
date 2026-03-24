@@ -1,0 +1,115 @@
+#pragma version 11
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 0 2 1
+    bytecblock 0x151f7c75
+    // smart_contracts/algosphere_core/contract.py:5
+    // class AlgosphereCore(ARC4Contract):
+    txn NumAppArgs
+    bz main___algopy_default_create@9
+    txn OnCompletion
+    !
+    assert
+    txn ApplicationID
+    assert
+    pushbytess 0x0a1b5d51 0x02bece11 // method "log_alert(string,uint64,string)string", method "hello(string)string"
+    txna ApplicationArgs 0
+    match log_alert hello
+    err
+
+main___algopy_default_create@9:
+    txn OnCompletion
+    !
+    txn ApplicationID
+    !
+    &&
+    return
+
+
+// smart_contracts.algosphere_core.contract.AlgosphereCore.log_alert[routing]() -> void:
+log_alert:
+    // smart_contracts/algosphere_core/contract.py:7
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    txna ApplicationArgs 2
+    len
+    pushint 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    txna ApplicationArgs 3
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    swap
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    // smart_contracts/algosphere_core/contract.py:9
+    // return String("Alert logged: ") + risk_level
+    pushbytes "Alert logged: "
+    swap
+    concat
+    // smart_contracts/algosphere_core/contract.py:7
+    // @abimethod()
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_0 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_2 // 1
+    return
+
+
+// smart_contracts.algosphere_core.contract.AlgosphereCore.hello[routing]() -> void:
+hello:
+    // smart_contracts/algosphere_core/contract.py:11
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    // smart_contracts/algosphere_core/contract.py:13
+    // return String("Hello from AlgoSphere, ") + name
+    pushbytes "Hello from AlgoSphere, "
+    swap
+    concat
+    // smart_contracts/algosphere_core/contract.py:11
+    // @abimethod()
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_0 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_2 // 1
+    return
